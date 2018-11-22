@@ -8,7 +8,7 @@ app.use(cors())
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
 const data = require('./routes/index')
-app.use('/data', data)
+app.use('/comics', data)
 
 app.use((req, res, next) => next({ status: 404, message: { error: 'not found' } }))
 
