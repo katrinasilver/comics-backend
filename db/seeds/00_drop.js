@@ -1,4 +1,4 @@
-const TABLE_NAME = 'table_name' // replace with actual table name
+const TABLE_NAME = 'comics'
 
 exports.seed = knex => {
   return knex(TABLE_NAME).del()

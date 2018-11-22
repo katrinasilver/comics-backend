@@ -1,7 +1,7 @@
 const path = require('path')
 // replace with actual database name you created
 // include _dev or _test per environments below!
-const DB_NAME = 'placeholder'
+const DB_NAME = 'comics'
 
 module.exports = {
 
