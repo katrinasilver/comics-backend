@@ -4,7 +4,7 @@ const DB_NAME = 'comics'
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: `postgresql://localhost/${DB_NAME}_dev`,
     migrations: {
       directory: path.join(__dirname, 'db', 'migrations')
@@ -15,18 +15,18 @@ module.exports = {
   },
 
   test: {
-    client: 'postgresql',
-    connection: `postgresql://localhost/${DB_NAME}_test`,
-    migrations: {
-      directory: path.join(__dirname, 'db', 'migrations')
-    },
-    seeds: {
-      directory: path.join(__dirname, 'db', 'seeds')
-    }
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    // migrations: {
+    //   directory: path.join(__dirname, 'db', 'migrations')
+    // },
+    // seeds: {
+    //   directory: path.join(__dirname, 'db', 'seeds')
+    // }
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: process.env.DATABASE_URL,
     migrations: {
       directory: path.join(__dirname, 'db', 'migrations')
