@@ -5,7 +5,7 @@ exports.up = knex => {
     table.increments()
     table.string('title').notNullable()
     table.text('url').notNullable()
-    table.integer('rating').notNullable().defaultsTo(0)
+    table.float('rating', 2,1).notNullable().defaultsTo(0)
     table.text('review').notNullable()
     table.timestamps(true, true)
   })
