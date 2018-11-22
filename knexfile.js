@@ -1,10 +1,11 @@
+const dotenv = require('dotenv').config()
 const path = require('path')
 const DB_NAME = 'comics'
 
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: 'postgresql',
     connection: `postgresql://localhost/${DB_NAME}_dev`,
     migrations: {
       directory: path.join(__dirname, 'db', 'migrations')
@@ -15,19 +16,23 @@ module.exports = {
   },
 
   test: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    // migrations: {
-    //   directory: path.join(__dirname, 'db', 'migrations')
-    // },
-    // seeds: {
-    //   directory: path.join(__dirname, 'db', 'seeds')
-    // }
+    client: 'postgresql',
+    connection: `postgresql://localhost/${DB_NAME}_test`,
+    migrations: {
+      directory: path.join(__dirname, 'db', 'migrations')
+    },
+    seeds: {
+      directory: path.join(__dirname, 'db', 'seeds')
+    }
   },
 
   production: {
-    client: 'pg',
+    client: 'postgresql',
     connection: process.env.DATABASE_URL,
+    pool: {
+      min: 0,
+      max: 15
+    },
     migrations: {
       directory: path.join(__dirname, 'db', 'migrations')
     },
