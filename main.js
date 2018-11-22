@@ -1,7 +1,7 @@
 const db = require('./db')
 
-db('table_name')
-  .join('table_name')
+db('comics')
+  .join('comics')
   .then(data => {
     console.log(data)
   }).catch(() => {
