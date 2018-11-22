@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 const data = require('./routes/index')
 app.use('/data', data)
 
-app.use((req, res, next) => next({ status: 404, message: { error: 'App.js ~ not found' } }))
+app.use((req, res, next) => next({ status: 404, message: { error: 'not found' } }))
 
 app.use((err, req, res, next) => {
   console.error(err)

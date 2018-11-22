@@ -18,22 +18,17 @@ const readAll = (req, res, next) => {
 }
 
 const create = (req, res, next) => {
-  if (!req.body.title || !req.body.name || !req.body.long_text || !req.body.rating)
+  if (!req.body.title || !req.body.url || !req.body.rating || !req.body.review)
     return next({ status: 400, message: `new entries must have all fields` })
 
-  if (req.body.name.length > 30) return next({ status: 400, message: `name exceeded character limit`})
-
-  model.create(req.body.title, req.body.name, req.body.long_text, req.body.rating)
+  model.create(req.body.title, req.body.url, req.body.rating, req.body.review)
     .then(data => res.status(201).json(data)).catch(next)
 }
 
 const edit = (req, res, next) => {
-  if (!req.body.title || !req.body.name || !req.body.long_text || !req.body.rating)
-    return next({ status: 400, message: `edit failed` })
+  if (!req.body) return next({ status: 400, message: `edit failed. request is empty` })
 
-  if (req.body.name.length > 30) return next({ status: 400, message: `name exceeded character limit` })
-
-  model.edit(req.params.id, req.body.title, req.body.name, req.body.long_text, req.body.rating)
+  model.edit(req.params.id, req.body.title, req.body.url, req.body.rating, req.body.review)
     .then(data => res.status(200).json(data)).catch(next)
 }
 

@@ -1,23 +1,23 @@
 const db = require('../../db')
 
-const get = (id) => db('table_name').where({ id: id }).first()
+const get = (id) => db('comics').where({ id: id }).first()
 
 const getAll = (limit) =>
-  !limit || limit === '0' ? db('table_name') : db('table_name').limit(limit)
+  !limit || limit === '0' ? db('comics') : db('comics').limit(limit)
 
-const create = (title, name, long_text, rating) => {
+const create = (title, url, rating, review) => {
   return (
-    db('table_name')
-      .insert({ title, name, long_text, rating })
+    db('comics')
+      .insert({ title, url, rating, review })
       .returning('*')
       .then(([ data ]) => data)
   )
 }
 
-const edit = (id, title, name, long_text, rating) => {
+const edit = (id, title, url, rating, review) => {
   return (
-    db('table_name')
-      .update({ title, name, long_text, rating })
+    db('comics')
+      .update({ title, url, rating, review })
       .where({ id: id })
       .returning('*')
       .then(([ data ]) => data)
@@ -26,7 +26,7 @@ const edit = (id, title, name, long_text, rating) => {
 
 const remove = (id) => {
   return (
-    db('table_name')
+    db('comics')
       .del()
       .where({ id: id })
       .returning('*')
