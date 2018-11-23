@@ -1,7 +1,7 @@
 {
   "name": "comicscore_backend",
   "version": "1.0.0",
-  "description": "An API that uses MVC architecture and RESTful patterns to perform CRUD operations",
+  "description": "Backend API and database migration layer for Comicscore",
   "main": "main.js",
   "scripts": {
     "dev": "nodemon ./src/app.js",
