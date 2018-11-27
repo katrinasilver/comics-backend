@@ -17,7 +17,7 @@ const create = (title, url, rating, review) => {
 const edit = (id, title, url, rating, review) => {
   return (
     db('comics')
-      .update({ title, url, rating, review })
+      .update({ id, title, url, rating, review })
       .where({ id: id })
       .returning('*')
       .then(([ data ]) => data)
