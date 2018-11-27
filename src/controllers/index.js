@@ -3,7 +3,7 @@ const model = require('../models')
 const read = (req, res, next) => {
   model.get(req.params.id)
     .then(data => {
-      if (data) return res.status(200).json(data)
+      if (data) return res.status(200).json([data])
       else throw next()
   }).catch(next)
 }
