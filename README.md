@@ -1,7 +1,14 @@
 # ComicScore Backend
 
-Coming Soon
+Backend API and database migration layer for Comicscore
+
+# How to use
+
+- Fork and clone this repository
+- Install Node.js in your system
+- Run `npm install` to get the dependencies
 
 # Features
 
-Coming Soon
+- Knex database migration
+- REST API routes built with Express
